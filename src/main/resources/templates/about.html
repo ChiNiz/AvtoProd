@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="templateforall :: head"></head>
+<style>
+	h3 {
+		margin-left:70px; /* Отступ парагрофа слева*/
+	}
+	  h2 {
+		position: relative;
+		color: black;
+		-webkit-text-stroke: .04em black;
+	}
+	h2::before { /* второй слой */
+		content: attr(data-text);
+		position: absolute; /* в том же месте той же ширины */
+		left: 0;
+		right: 0;
+		-webkit-text-stroke: .02em white;
+	}
+</style>
+<body>
+<style>
+	<!-- -->
+	* {
+		box-sizing: border-box;
+	}
+	.decor {
+		position: relative;
+		max-width: 400px;
+		margin: 50px auto 0;
+		background: red;
+		border-radius: 30px;
+	}
+	.form-inner {
+		padding: 50px;
+	}
+	.form-inner input, .form-inner textarea {
+		display: block;
+		width: 100%;
+		padding: 0 20px;
+		margin-bottom: 10px;
+		background: #E9EFF6;
+		line-height: 40px;
+		border-width: 0;
+		border-radius: 20px;
+		font-family: 'Roboto', sans-serif;
+	}
+	.form-inner input[type="submit"] {
+		margin-top: 30px;
+		background: #f69a73;
+		border-bottom: 4px solid #d87d56;
+		color: white;
+		font-size: 14px;
+	}
+	.form-inner textarea {
+		resize: none;
+	}
+
+	<!-- -->
+
+
+	* {
+		box-sizing: border-box;
+	}
+	.product-item {
+		width: 300px;
+		margin: 0 auto;
+		padding: 10px 10px 5px 10px;
+		border: 1px solid #eee;
+		background: white;
+		font-family: "Open Sans";
+		overflow: hidden;
+		transition: .4s linear;
+	}
+	.product-img {
+		transition: 1s ease-in-out;
+	}
+	.product-img:hover {
+		transform: scale(1.1);
+	}
+	.product-img img {
+		display: block;
+		width: 100%;
+	}
+	.product-list {
+		margin-top: 15px;
+	}
+	.product-list h3 {
+		font-weight: 700;
+		color: #39404B;
+		margin: 0;
+		text-transform: uppercase;
+		font-size: 18px;
+		line-height: 2;
+	}
+	.price {
+		color: #E34D38;
+		display: block;
+		font-size: 22px;
+		margin-bottom: 12px;
+	}
+	.stars {
+		height: 14px;
+		line-height: 14px;
+		margin: 7px 0;
+	}
+	.stars:before {
+		content: "\f005\f005\f005\f005\f005";
+		color: #EFB71C;
+		font-size: 14px;
+		font-family: FontAwesome;
+	}
+	.actions {
+		border-top: 1px solid #eee;
+		padding-top: 4px;
+		font-size: 13px;
+		height: 30px;
+		line-height: 30px;
+	}
+	.actions:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	.add-to-cart, .add-to-links {
+		float: left;
+	}
+	.cart-button {
+		text-decoration: none;
+		color: #8C877C;
+		padding-right: 20px;
+		border-right: 1px solid #ddd;
+		transition: .4s linear;
+	}
+	.cart-button:before {
+		content: "\f07a";
+		font-family: FontAwesome;
+		margin-right: 10px;
+	}
+	.add-to-cart:hover .cart-button, .wishlist:hover, .compare:hover {
+		color: #E34D38;
+	}
+	.wishlist, .compare {
+		color: #8C877C;
+		padding-left: 20px;
+		transition: .4s linear;
+	}
+	.wishlist:after, .compare:after {
+		display: inline-block;
+		font-family: FontAwesome;
+		font-size: 13px;
+	}
+	.wishlist:after {
+		content: "\f004";
+	}
+	.compare:after {
+		content: "\f079";
+	}
+</style>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+	
+	<!-- Header section -->
+	<header th:insert="templateforall :: header"></header>
+	<!-- Header section end -->
+
+
+	<!-- Page info section -->
+	<section class="page-top-info set-bg" data-setbg="img/page-top-bg/1.jpg">
+		<div class="ptf-center">
+		</div>
+	</section>
+	<!-- Page info section end -->
+
+
+	<!-- Tovars section -->
+	<section class="inter-section spad">
+		<div class="container">
+			<!-- Tovars info -->
+			<div class="section-title">
+				<h2>Седаны</h2>
+			</div>
+			<div class="row">
+				<!-- -->
+				<div class="col-md-6">
+					<div class="product-item">
+						<div class="product-img">
+							<a href="menu">
+								<img src="img/camry.jpg">
+							</a>
+						</div>
+						<div class="product-list">
+							<h3>Toyota Camry</h3>
+							<div class="stars"></div>
+							<span class="price">₽ 2100000</span>
+							<div class="actions">
+								<div class="add-to-cart">
+									<a href="menu" class="cart-button">Купить</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- -->
+				<div class="col-md-6">
+					<div class="product-item">
+						<div class="product-img">
+							<a href="menu">
+								<img src="img/corolla.jpg">
+							</a>
+						</div>
+						<div class="product-list">
+							<h3>Toyota Corolla</h3>
+							<div class="stars"></div>
+							<span class="price">₽ 1490000</span>
+							<div class="actions">
+								<div class="add-to-cart">
+									<a href="menu" class="cart-button">Купить</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- -->
+				<!-- -->
+				<div class="col-md-6">
+					<div class="product-item">
+						<div class="product-img">
+							<a href="menu">
+								<img src="img/supra.jpg">
+							</a>
+						</div>
+						<div class="product-list">
+							<h3>Toyota Supra</h3>
+							<div class="stars"></div>
+							<span class="price">₽ 9900000</span>
+							<div class="actions">
+								<div class="add-to-cart">
+									<a href="menu" class="cart-button">Купить</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- -->
+				<!-- -->
+				<div class="col-md-6">
+					<div class="product-item">
+						<div class="product-img">
+							<a href="menu">
+								<img src="img/pupra.jpg">
+							</a>
+						</div>
+						<div class="product-list">
+							<h3>Toyota Supra Fast and Furious 2</h3>
+							<div class="stars"></div>
+							<span class="price">₽ 12000000</span>
+							<div class="actions">
+								<div class="add-to-cart">
+									<a href="menu" class="cart-button">Купить</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- -->
+			</div>
+			<div class="section-title">
+				<h2>Минивены</h2>
+			</div>
+			<div class="row">
+				<!-- -->
+				<div class="col-md-6">
+					<div class="product-item">
+						<div class="product-img">
+							<a href="menu">
+								<img src="img/alfa.jpg">
+							</a>
+						</div>
+						<div class="product-list">
+							<h3>Toyota Alphard</h3>
+							<div class="stars"></div>
+							<span class="price">₽ 3590000</span>
+							<div class="actions">
+								<div class="add-to-cart">
+									<a href="menu" class="cart-button">Купить</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- -->
+				<div class="col-md-6">
+					<div class="product-item">
+						<div class="product-img">
+							<a href="menu">
+								<img src="img/hiace.jpg">
+							</a>
+						</div>
+						<div class="product-list">
+							<h3>Toyota Hiace</h3>
+							<div class="stars"></div>
+							<span class="price">₽ 2200000</span>
+							<div class="actions">
+								<div class="add-to-cart">
+									<a href="menu" class="cart-button">Купить</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- -->
+				<!-- -->
+				<div class="col-md-6">
+					<div class="product-item">
+						<div class="product-img">
+							<a href="menu">
+								<img src="img/sienna.jpg">
+							</a>
+						</div>
+						<div class="product-list">
+							<h3>Toyota Sienna</h3>
+							<div class="stars"></div>
+							<span class="price">₽ 3400000</span>
+							<div class="actions">
+								<div class="add-to-cart">
+									<a href="menu" class="cart-button">Купить</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- -->
+				<!-- -->
+				<div class="col-md-6">
+					<div class="product-item">
+						<div class="product-img">
+							<a href="menu">
+								<img src="img/majesty.jpg">
+							</a>
+						</div>
+						<div class="product-list">
+							<h3>Toyota Majesty</h3>
+							<div class="stars"></div>
+							<span class="price">₽ 4550000</span>
+							<div class="actions">
+								<div class="add-to-cart">
+									<a href="menu" class="cart-button">Купить</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- -->
+			</div>
+			<div class="section-title">
+				<h2>Внедорожники</h2>
+			</div>
+			<div class="row">
+				<!-- -->
+				<div class="col-md-6">
+					<div class="product-item">
+						<div class="product-img">
+							<a href="menu">
+								<img src="img/high.jpg">
+							</a>
+						</div>
+						<div class="product-list">
+							<h3>Toyota Highlander New</h3>
+							<div class="stars"></div>
+							<span class="price">₽ 3089300</span>
+							<div class="actions">
+								<div class="add-to-cart">
+									<a href="menu" class="cart-button">Купить</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- -->
+				<div class="col-md-6">
+					<div class="product-item">
+						<div class="product-img">
+							<a href="menu">
+								<img src="img/fort.jpg">
+							</a>
+						</div>
+						<div class="product-list">
+							<h3>Toyota Fortuner New</h3>
+							<div class="stars"></div>
+							<span class="price">₽ 1800000</span>
+							<div class="actions">
+								<div class="add-to-cart">
+									<a href="menu" class="cart-button">Купить</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- -->
+				<!-- -->
+				<div class="col-md-6">
+					<div class="product-item">
+						<div class="product-img">
+							<a href="menu">
+								<img src="img/cru.jpg">
+							</a>
+						</div>
+						<div class="product-list">
+							<h3>Toyota Land Cruiser Prado TX</h3>
+							<div class="stars"></div>
+							<span class="price">₽ 7000000</span>
+							<div class="actions">
+								<div class="add-to-cart">
+									<a href="menu" class="cart-button">Купить</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- -->
+				<!-- -->
+				<div class="col-md-6">
+					<div class="product-item">
+						<div class="product-img">
+							<a href="menu">
+								<img src="img/tundra.jpg">
+							</a>
+						</div>
+						<div class="product-list">
+							<h3>Toyota Tundra</h3>
+							<div class="stars"></div>
+							<span class="price">₽ 5034300</span>
+							<div class="actions">
+								<div class="add-to-cart">
+									<a href="menu" class="cart-button">Купить</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- -->
+				<!-- -->
+			</div>
+			<div class="section-title">
+				<h2>Хэтчбэки</h2>
+			</div>
+			<div class="row">
+				<!-- -->
+				<div class="col-md-6">
+					<div class="product-item">
+						<div class="product-img">
+							<a href="menu">
+								<img src="img/prius.jpg">
+							</a>
+						</div>
+						<div class="product-list">
+							<h3>Toyota Prius</h3>
+							<div class="stars"></div>
+							<span class="price">₽ 1900000</span>
+							<div class="actions">
+								<div class="add-to-cart">
+									<a href="menu" class="cart-button">Купить</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- -->
+				<div class="col-md-6">
+					<div class="product-item">
+						<div class="product-img">
+							<a href="menu">
+								<img src="img/auris.jpg">
+							</a>
+						</div>
+						<div class="product-list">
+							<h3>Toyota Auris</h3>
+							<div class="stars"></div>
+							<span class="price">₽ 900000</span>
+							<div class="actions">
+								<div class="add-to-cart">
+									<a href="menu" class="cart-button">Купить</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- -->
+				<div class="col-md-6">
+					<div class="product-item">
+						<div class="product-img">
+							<a href="menu">
+								<img src="img/yaris.jpg">
+							</a>
+						</div>
+						<div class="product-list">
+							<h3>Toyota Yaris</h3>
+							<div class="stars"></div>
+							<span class="price">₽ 3600000</span>
+							<div class="actions">
+								<div class="add-to-cart">
+									<a href="menu" class="cart-button">Купить</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- -->
+				<!-- -->
+				<div class="col-md-6">
+					<div class="product-item">
+						<div class="product-img">
+							<a href="menu">
+								<img src="img/aygo.jpg">
+							</a>
+						</div>
+						<div class="product-list">
+							<h3>Toyota Aygo</h3>
+							<div class="stars"></div>
+							<span class="price">₽ 2900000</span>
+							<div class="actions">
+								<div class="add-to-cart">
+									<a href="menu" class="cart-button">Купить</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- -->
+			</div>
+		</div>
+	</section>
+	<!-- Intro section end -->
+
+	<div class="text-center">
+		<img src="img/iso2.png" alt="">
+	</div>
+
+	<form class="decor" method="post">
+		<div class="form-left-decoration"></div>
+		<div class="form-right-decoration"></div>
+		<div class="circle"></div>
+		<div class="form-inner">
+			<h3>Запись на</h3>
+			<h3>тест-драйв</h3>
+			<br>
+			<input type="text" name="name" placeholder="ФИО">
+			<input type="email" name="email" placeholder="Email">
+			<label for="date">Выберите автомобиль: </label>
+<!--			<form>-->
+				<p><select name="cars">
+					<optgroup label="Седаны">
+						<option>TOYOTA CAMRY</option>
+						<option>TOYOTA COROLLA</option>
+						<option>TOYOTA SUPRA</option>
+						<option>TOYOTA SUPRA FAST AND FURIOUS 2</option>
+					</optgroup>
+					<optgroup label="Минивены">
+						<option>TOYOTA ALPHARD</option>
+						<option>TOYOTA HIACE</option>
+						<option>TOYOTA SIENNA</option>
+						<option>TOYOTA MAJESTY</option>
+					</optgroup>
+					<optgroup label="Внедорожники">
+						<option>TOYOTA HIGHLANDER NEW</option>
+						<option>TOYOTA FORTUNER NEW</option>
+						<option>TOYOTA LAND CRUISER PRADO TX</option>
+						<option>TOYOTA TUNDRA</option>
+					</optgroup>
+					<optgroup label="Хэтчбэки">
+						<option>TOYOTA PRIUS</option>
+						<option>TOYOTA AURIS</option>
+						<option>TOYOTA YARIS</option>
+						<option>TOYOTA AYGO</option>
+					</optgroup>
+				</select></p>
+<!--			</form>-->
+			<label for="date">Дата согласования: </label>
+			<input type="date" id="date" name="date"/>
+			<label for="date">Время: </label>
+<!--			<form>-->
+				<p><select name="vrem">
+						<option>12:30</option>
+						<option>14:00</option>
+						<option>15:30</option>
+						<option>17:00</option>
+						<option>18:30</option>
+						<option>20:00</option>
+				</select></p>
+<!--			</form>-->
+			<textarea placeholder="Ваши пожелания" name="addtext" rows="3"></textarea>
+			<input type="submit" value="Отправить">
+	</div>
+	</form>
+	<br>
+	<br>
+	<br>
+	<!-- Footer section -->
+	<footer th:insert="templateforall :: footer"></footer>
+	<!-- Footer section end -->
+
+
+	<!--====== Javascripts & Jquery ======-->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/circle-progress.min.js"></script>
+	<script src="js/main.js"></script>
+
+
+	<!-- load for map -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YyDTa0qqOjIerob2VTIwo_XVMhrruxo"></script>
+	<script src="js/map.js"></script>
+
+<script>
+	window.replainSettings = { id: '7618b145-cbdc-4bad-8ac1-e59eb84e52ff' };
+	(function(u){var s=document.createElement('script');s.async=true;s.src=u;
+		var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
+	})('https://widget.replain.cc/dist/client.js');
+</script>
+
+    </body>
+</html>

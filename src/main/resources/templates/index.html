@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="templateforall :: head"></head>
+<style>
+	h2 {
+		position: relative;
+		color: black;
+		-webkit-text-stroke: .04em black;
+	}
+	h2::before { /* второй слой */
+		content: attr(data-text);
+		position: absolute; /* в том же месте той же ширины */
+		left: 0;
+		right: 0;
+		-webkit-text-stroke: .02em white;
+	}
+</style>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+	<!-- Header section -->
+	<header th:insert="templateforall :: header"></header>
+	<!-- Header section end -->
+
+
+	<!-- Hero section -->
+	<section class="hero-section">
+		<div class="hero-slider owl-carousel">
+			<div class="hs-item set-bg" data-setbg="img/slider/slider-1.jpg">
+			</div>
+			<div class="hs-item set-bg" data-setbg="img/slider/slider-2.jpg">
+			</div>
+			<div class="hs-item set-bg" data-setbg="img/slider/slider-3.jpg">
+			</div>
+		</div>
+	</section>
+	<!-- Hero section end -->
+
+
+
+	<!-- Intro section -->
+	<section class="inter-section spad">
+		<div class="container">
+			<div class="section-title">
+				<h2>Приветствуем вас!</h2>
+			</div>
+			<div class="row">
+				<div class="col-md-4 intro-item">
+					<h3>Добро пожаловать в наш АвтоМир!</h3>
+					<p>Добро пожаловать в наш АвтоМир! Мы предлагаем широкий выбор автомобилей. Наша команда профессионалов готова помочь Вам найти идеальный автомобиль, соответствующий вашим потребностям и предпочтениям. Посетите нас сегодня и найдите свою мечту на колесах!</p>
+				</div>
+				<div class="col-md-4 intro-item">
+					<h3>Стиль, технологии и надежность</h3>
+					<p>Наши автомобили отличаются не только стилем, но и передовыми технологиями. В АвтоМире Вы найдете автомобили с высокой эффективностью топлива, инновационными системами безопасности и передовыми функциями комфорта.</p>
+				</div>
+				<div class="col-md-4 intro-item">
+					<h3>Полный спектр услуг для вашего автомобиля</h3>
+					<p>Помимо продажи автомобилей, мы также предлагаем широкий спектр услуг, включая финансирование, страхование, техническое обслуживание и сервисное обслуживание. Наша команда специалистов всегда готова помочь Вам во всех вопросах, связанных с Вашим автомобилем. Посетите наш АвтоМир и узнайте, как мы можем сделать Ваше автомобильное приобретение простым и удобным.</p>
+				</div>
+			</div>
+			<div class="text-center">
+				<img src="img/iso.png" alt="">
+			</div>
+		</div>
+	</section>
+	<!-- Intro section end -->
+
+
+
+	<!-- Customer Reviews section -->
+	<section class="testimonials-section spad pb-0 set-bg" data-setbg="img/review-bg-toyota.jpg">
+		<div class="container">
+			<div class="section-title text-white">
+				<h2>Отзывы наших клиентов</h2>
+			</div>
+			<div class="testimonials-slider owl-carousel">
+				<div class="ts-item text-white">
+					<div class="quota">“</div>
+					<p>"Я приобрела автомобиль в вашем АвтоМир и осталась очень довольна обслуживанием. Мария из отдела продаж была очень внимательной и профессиональной. Она помогла мне выбрать идеальную модель, а также провела тщательную проверку автомобиля перед покупкой. Весь процесс был гладким и без стресса. Рекомендую ваш автосалон всем, кто ищет отличный сервис!</p>
+					<h5><span>Анна Иванова</span>, Клиентка</h5>
+				</div>
+				<div class="ts-item text-white">
+					<div class="quota">“</div>
+					<p>Я посетил ваш АвтоМир для технического обслуживания моего автомобиля, и хочу отметить отличное обслуживание, предоставленное Максимом. Он был очень вежлив и профессионален. Все необходимые работы были выполнены в срок, и мой автомобиль в идеальном состоянии. Я очень доволен вашим сервисом и обязательно буду рекомендовать вас своим друзьям.</p>
+					<h5><span>Максим Петров</span>, Клиент</h5>
+				</div>
+				<div class="ts-item text-white">
+					<div class="quota">“</div>
+					<p>Отличное обслуживание в вашем АвтоМире! Ксения была моим персональным консультантом при покупке автомобиля. Она выслушала все мои требования и помогла найти автомобиль, который полностью соответствовал моим ожиданиям. Елена была очень терпеливой и профессиональной во всех наших взаимодействиях. Я благодарна ей за отличный сервис и рекомендую всем обратиться к ней при поиске автомобиля.</p>
+					<h5><span>Елена Смирнова</span>, Клиентка</h5>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Customer Reviews section end -->
+
+
+
+	<!-- Services section -->
+	<section class="services-section spad">
+		<div class="container">
+			<div class="section-title">
+				<h2>Наши машины</h2>
+			</div>
+			<div class="row services">
+				<div class="col-lg-3 col-md-6 service-item">
+					<p><img src="img/smallpic/sedan.jpg"></p>
+					<h3>Седаны</h3>
+					<p>Седаны - воплощение элегантности и роскоши. Их гладкие линии и изысканный дизайн придают им статус и утонченность. Седаны предлагают комфортное пространство для пассажиров и великолепную динамику, делая каждую поездку незабываемой.</p>
+				</div>
+				<div class="col-lg-3 col-md-6 service-item">
+					<p><img src="img/smallpic/kross.jpg"></p>
+					<h3>Минивены</h3>
+					<p>Минивены - простор и удобство в идеальном сочетании. Их уникальный дизайн предлагает комфортабельное пространство для всей семьи и большое количество гибких вариантов пассажирских и грузовых конфигураций. Минивены обладают элегантными линиями и передовыми функциями безопасности, что делает их идеальным выбором для путешествий и повседневных приключений. Наслаждайтесь комфортом и практичностью, находясь на широких дорогах жизни вместе с минивеном.</p>
+				</div>
+				<div class="col-lg-3 col-md-6 service-item">
+					<p><img src="img/smallpic/vnedor.jpg"></p>
+					<h3>Внедорожники</h3>
+					<p>Внедорожники - воплощение силы и авантюризма. Эти мощные автомобили обладают высокой проходимостью и способностью справляться с самыми сложными условиями на дороге. Внедорожники предлагают просторный интерьер, передовые технологии и возможность взять с собой всю необходимую экипировку для активного отдыха.</p>
+				</div>
+				<div class="col-lg-3 col-md-6 service-item">
+					<p><img src="img/smallpic/het.jpg"></p>
+					<h3>Хэтчбэки</h3>
+					<p>Хэтчбэки - симбиоз стиля и практичности. Их компактные размеры и удобная задняя дверь делают их идеальным выбором для городской жизни. Хэтчбэки обладают эффективной экономичностью и маневренностью, а также предлагают просторный багажник для перевозки грузов. Сочетание функциональности и современного дизайна делает хэтчбэки идеальным выбором для активных горожан.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Services section end -->
+
+	<!-- Footer section -->
+	<footer th:insert="templateforall :: footer"></footer>
+	<!-- Footer section end -->
+
+
+
+	<!--====== Javascripts & Jquery ======-->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/circle-progress.min.js"></script>
+	<script src="js/main.js"></script>
+
+
+	<!-- load for map -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YyDTa0qqOjIerob2VTIwo_XVMhrruxo"></script>
+	<script src="js/map.js"></script>
+
+	<script>
+		window.replainSettings = { id: '7618b145-cbdc-4bad-8ac1-e59eb84e52ff' };
+		(function(u){var s=document.createElement('script');s.async=true;s.src=u;
+			var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
+		})('https://widget.replain.cc/dist/client.js');
+	</script>
+
+    </body>
+</html>

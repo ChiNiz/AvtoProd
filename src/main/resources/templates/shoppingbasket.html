@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="templateforall :: head"></head>
+<style>
+    h2 {
+        position: relative;
+        color: black;
+        -webkit-text-stroke: .04em black;
+    }
+    h2::before { /* второй слой */
+        content: attr(data-text);
+        position: absolute; /* в том же месте той же ширины */
+        left: 0;
+        right: 0;
+        -webkit-text-stroke: .02em white;
+    }
+</style>
+<body>
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<!-- Header section -->
+<header th:insert="templateforall :: header"></header>
+<!-- Header section end -->
+
+
+<!-- Page info section -->
+<section class="page-top-info set-bg" data-setbg="img/review-bg.jpg">
+    <div class="ptf-center">
+        <div class="container">
+            <h2>Заказ</h2>
+        </div>
+    </div>
+</section>
+<!-- Page info section end -->
+
+<form method="post" id="endpost">
+<section class="shoppingbasket">
+
+    <div class="elementshoppingbasket" th:id="${item.value.name}" th:each="item : ${map}">
+        <div class="elementshoppingbasketname" th:text="${item.value.name}"/>
+        <div class="elementshoppingbasketname" th:text="${item.value.description}"/>
+        <div class="elementshoppingbasketname" th:text="${item.value.price}"/>
+        <div class="elementshoppingbasketname">
+            <div class="elementshoppingbasketaddorremove"><button type="button" th:par="${item.key}" onclick='decrement(this.getAttribute("par"))'>-</button></div>
+            <div class="elementshoppingbasketcounter" th:id="${item.key}" th:text="${counter.get(item.value.id)}"/>
+            <div class="elementshoppingbasketaddorremove"><button type="button" th:par="${item.key}" onclick='increment(this.getAttribute("par"))'>+</button></div>
+        </div>
+        <div class="elementshoppingbasketname"><button type="button" th:par="${item.value.name}" onclick='del(this.getAttribute("par"))'>Удалить</button></div>
+<!--            <input type="hidden" th:id="'carid' + ${item.key}" th:name="'carid' + ${item.key}" th:value="${item.value.id}">-->
+            <input type="hidden" th:id="'count' + ${item.key}"  th:name="'count' + ${item.key}" th:value="${counter.get(item.value.id)}">
+    </div>
+</section>
+</form>
+<!-- Menu section -->
+<div class="shoppingbasketbuy">
+    <p id="endsumm"></p>
+    <button type="submit" form="endpost">Заказ</button>
+</div>
+<section class="menu-section spad set-bg" data-setbg="img/review-bg.jpg">
+
+</section>
+<!-- Menu section end -->
+
+<!-- Footer section -->
+<footer th:insert="templateforall :: footer"></footer>
+<!-- Footer section end -->
+<script>
+    function increment(id) {
+        var n = document.getElementById(id).innerText;
+        document.getElementById(id).innerText = ++n;
+        document.getElementById('count' + id).value = n;
+    }
+    function decrement(id) {
+        var n = document.getElementById(id).innerText;
+        if(n > 0) {
+            document.getElementById(id).innerText = --n;
+            document.getElementById('count' + id).value = n;
+        }
+    }
+    function del(id){
+        document.getElementById(id).remove();
+    }
+</script>
+<!--====== Javascripts & Jquery ======-->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/circle-progress.min.js"></script>
+<script src="js/main.js"></script>
+
+
+<!-- load for map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YyDTa0qqOjIerob2VTIwo_XVMhrruxo"></script>
+<script src="js/map.js"></script>
+
+<script>
+    window.replainSettings = { id: '7618b145-cbdc-4bad-8ac1-e59eb84e52ff' };
+    (function(u){var s=document.createElement('script');s.async=true;s.src=u;
+        var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
+    })('https://widget.replain.cc/dist/client.js');
+</script>
+
+</body>
+</html>

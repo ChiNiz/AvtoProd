@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="templateforall :: head"><script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=ZIYyjhE0rohts6OwemfZEvuUSw4QJH8blwV7Zmze8xCNPnWgBb0jj6jR4ugCyEa-8kDdpYg6fV0vtOzhmWaRaHdOpkXQAEfd2809lrKKKIc341r87S4C6Sc5r7ivztzM3jQXXGbmyBa9BYYO54tZyICwVUjlInKlYdHqoOGzpl8kGQNj1ZfSKffzI5MaIrhX_dWdI6ll6hpi0cHsVyXNzjU9dzT65XGgS3mudW_MamwHTRitn-i4R4K2pni8vx6hdBh4dHXHL4indEHGGW3vx1G6A-wY8cG1FAvxl0FK7YNwPbOLtmfyk4laD3yXAgtVUzWhxnLiksSakpJyIvv7xi6NsrISS4yKK4AjxFxXqMW9yaUJXdCc4p8Ab2Y6iwLYhY3XCYDIKb0ZxHCHSwiTRdM3IRHgn6VERhkEqmGX56kvSOzHw02csVcrkaQ67FODjaLCqmrLqKZhJ5O6jZVyVvYWzzQutRcfoC0PD4Ik4l6Qa-fmiTF9HIWZYwWtgm00kCZiKopoXsfbyCi9ToENXcIAKgLUpHWFrmPFW_8LcLVzaKtu8qrFovpcxvL53P17LEe8dqfObBMbieMhduw__q00ayAVNntAFLw59aHy7115xotQTBN3ScRgVeLj7C1KefkHIkXeSksvVUBO39B3AlryGzs_AbaaNIp6v643NO83TaOEow-Z9JsY1_tmkEunkyvZ3cWke16zWRZIQjG30pUGU0DxavMlVV4zT4Tr7jcxw54P3PzT_EuL2NK4QDIRoS54JrX3wJPMXfYgwJ6gjTQXmv0lNgiQeXwmuQ4-b_zhKRBma547Pm9-LAnk9LBu74VRnSlUyNIFeQRHzuToJCTzOJDG_BwfZo7vJ7rq2xMCzz3IOMopcMAcZs1jGlXgoQf1ziHuqvqyNZzzjWwM4oBKJMkKJYrHeAY0vL2GJQjoDkgbWBMkdIsyRfs7O6RHvSOWjAyMEOlr-WjpetftlvbwZZY9vIKjR4dGxa9xE_2uS140WvfzSYnQUTJWiKuJQ5nBgWQ-6kvebLzYL4dWGUh21-FlWHjHU2cDm3FVXQjWGGY4DJzooIPEulsThxlTIJCpqLKMMwHPhC444hNTYw4YzgGqYIFETla-nQwv8r877LzHwIAqNlAywAD2RfETQ13QyNBNtccJpgrDcdL1TT6p802teg0FfXaQm9XWhxe4gn0qkgjZdUPoNCmzsUx8U6ldlYUSQrGiTgnAXCVTdk8Nba0umm-boKRKryZmGKyDltSH6GnKXVliM_hWQOIufEEKmJQPo1fX82Ake3UJ_9eL0_NuvvjISZ8WitkBfLqj9ZkrjbNug0nUFLAAqzYE5y9MIvYHHUaelDBVWCwkkH-gJWmKemXNqc60qmvcm8E9aBWglPTQugA2RCTBZiMqMzK0ohgmPDdS655l_9r33-1z-nhJybrhLGLApnwVtGV4pJSgwlq9bNyVm9VQ-3ch6NuTBk4enijjqVsVBukQ0ntR9t9QwhDK4AHiSW9GoUZkFs5T945UQrW4NdN3-CHZTfHQ1ZB2o2AzeTzTC5Q6XpeCtlp3WrfXA-FH8tuVMvEW6ltKGf3CDT1Y3L_CjRhQOvmSdwS--1qsfryPNsw5DYaYjz1o_O1Wpu73vJyqZ7dBk9mm4VjmP7300WnBMTh9lwHpd6oPx6BrHUTlyK2CKSyToSdIaL_Cg4TaogoSLrxk564K8ResEnODGbEPT_Et" charset="UTF-8"></script></head>
+<style>
+  h3 {
+    margin-left:70px; /* Отступ парагрофа слева*/
+  }
+  h2 {
+    position: relative;
+    color: black;
+    -webkit-text-stroke: .04em black;
+  }
+  h2::before { /* второй слой */
+    content: attr(data-text);
+    position: absolute; /* в том же месте той же ширины */
+    left: 0;
+    right: 0;
+    -webkit-text-stroke: .02em white;
+  }
+</style>
+<body>
+<style>
+  <!-- -->
+  * {
+    box-sizing: border-box;
+  }
+  .decor {
+    position: relative;
+    max-width: 400px;
+    margin: 50px auto 0;
+    background: red;
+    border-radius: 30px;
+  }
+  .form-inner {
+    padding: 50px;
+  }
+  .form-inner input, .form-inner textarea {
+    display: block;
+    width: 100%;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    background: #E9EFF6;
+    line-height: 40px;
+    border-width: 0;
+    border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
+  }
+  .form-inner input[type="submit"] {
+    margin-top: 30px;
+    background: #f69a73;
+    border-bottom: 4px solid #d87d56;
+    color: white;
+    font-size: 14px;
+  }
+  .form-inner textarea {
+    resize: none;
+  }
+
+  <!-- -->
+
+
+  * {
+    box-sizing: border-box;
+  }
+  .product-item {
+    width: 300px;
+    margin: 0 auto;
+    padding: 10px 10px 5px 10px;
+    border: 1px solid #eee;
+    background: white;
+    font-family: "Open Sans";
+    overflow: hidden;
+    transition: .4s linear;
+  }
+  .product-img {
+    transition: 1s ease-in-out;
+  }
+  .product-img:hover {
+    transform: scale(1.1);
+  }
+  .product-img img {
+    display: block;
+    width: 100%;
+  }
+  .product-list {
+    margin-top: 15px;
+  }
+  .product-list h3 {
+    font-weight: 700;
+    color: #39404B;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 2;
+  }
+  .price {
+    color: #E34D38;
+    display: block;
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .stars {
+    height: 14px;
+    line-height: 14px;
+    margin: 7px 0;
+  }
+  .stars:before {
+    content: "\f005\f005\f005\f005\f005";
+    color: #EFB71C;
+    font-size: 14px;
+    font-family: FontAwesome;
+  }
+  .actions {
+    border-top: 1px solid #eee;
+    padding-top: 4px;
+    font-size: 13px;
+    height: 30px;
+    line-height: 30px;
+  }
+  .actions:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .add-to-cart, .add-to-links {
+    float: left;
+  }
+  .cart-button {
+    text-decoration: none;
+    color: #8C877C;
+    padding-right: 20px;
+    border-right: 1px solid #ddd;
+    transition: .4s linear;
+  }
+  .cart-button:before {
+    content: "\f07a";
+    font-family: FontAwesome;
+    margin-right: 10px;
+  }
+  .add-to-cart:hover .cart-button, .wishlist:hover, .compare:hover {
+    color: #E34D38;
+  }
+  .wishlist, .compare {
+    color: #8C877C;
+    padding-left: 20px;
+    transition: .4s linear;
+  }
+  .wishlist:after, .compare:after {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-size: 13px;
+  }
+  .wishlist:after {
+    content: "\f004";
+  }
+  .compare:after {
+    content: "\f079";
+  }
+</style>
+
+<!-- Page Preloder -->
+<div id="preloder">
+  <div class="loader"></div>
+</div>
+
+<!-- Header section -->
+<header th:insert="templateforall :: header"></header>
+<!-- Header section end -->
+
+
+<!-- Page info section -->
+<section class="page-top-info set-bg" data-setbg="img/page-top-bg/acc2.jpg">
+  <div class="ptf-center">
+  </div>
+</section>
+<!-- Page info section end -->
+
+
+<!-- Tovars section -->
+<section class="inter-section spad">
+  <div class="container">
+    <!-- Tovars info -->
+    <div class="section-title">
+      <h2>Диски</h2>
+    </div>
+    <div class="row">
+      <!-- -->
+      <div class="col-md-6">
+        <div class="product-item">
+          <div class="product-img">
+            <a href="menu">
+              <img src="img/disk1.jpg">
+            </a>
+          </div>
+          <div class="product-list">
+            <h3>Колесный диск СКАД Дели 6xR15 4x100 ET40 DIA60.1 черный глянцевый с полированной лицевой поверхностью</h3>
+            <div class="stars"></div>
+            <span class="price">₽ 7080</span>
+            <div class="actions">
+              <div class="add-to-cart">
+                <a href="menu" class="cart-button">Купить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- -->
+      <div class="col-md-6">
+        <div class="product-item">
+          <div class="product-img">
+            <a href="menu">
+              <img src="img/disk2.jpg">
+            </a>
+          </div>
+          <div class="product-list">
+            <h3>Колесный диск СКАД Сочи 6xR16 4x100 ET50 DIA60.1 черный глянцевый с полированной лицевой поверхностью</h3>
+            <div class="stars"></div>
+            <span class="price">₽ 8040</span>
+            <div class="actions">
+              <div class="add-to-cart">
+                <a href="menu" class="cart-button">Купить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- -->
+      <!-- -->
+      <div class="col-md-6">
+        <div class="product-item">
+          <div class="product-img">
+            <a href="menu">
+              <img src="img/disk3.jpg">
+            </a>
+          </div>
+          <div class="product-list">
+            <h3>Колесный диск СКАД Амстердам 7xR17 5x114.3 ET48.5 DIA67.1 черный глянцевый с полированной лицевой поверхностью </h3>
+            <div class="stars"></div>
+            <span class="price">₽ 9640</span>
+            <div class="actions">
+              <div class="add-to-cart">
+                <a href="menu" class="cart-button">Купить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- -->
+      <!-- -->
+      <div class="col-md-6">
+        <div class="product-item">
+          <div class="product-img">
+            <a href="menu">
+              <img src="img/disk4.jpg">
+            </a>
+          </div>
+          <div class="product-list">
+            <h3>Колесный диск CrossStreet CR17 6xR16 4x100 ET49 DIA54.1 черный полностью полированный</h3>
+            <div class="stars"></div>
+            <span class="price">₽ 5790</span>
+            <div class="actions">
+              <div class="add-to-cart">
+                <a href="menu" class="cart-button">Купить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- -->
+    </div>
+    <div class="section-title">
+      <h2>Коврики в салон</h2>
+    </div>
+    <div class="row">
+      <!-- -->
+      <div class="col-md-6">
+        <div class="product-item">
+          <div class="product-img">
+            <a href="menu">
+              <img src="img/kovr1.jpg">
+            </a>
+          </div>
+          <div class="product-list">
+            <h3>Автомобильные коврики (автоковрики) ЭВА / EVA / ЕВА</h3>
+            <div class="stars"></div>
+            <span class="price">₽ 2259</span>
+            <div class="actions">
+              <div class="add-to-cart">
+                <a href="menu" class="cart-button">Купить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- -->
+      <div class="col-md-6">
+        <div class="product-item">
+          <div class="product-img">
+            <a href="menu">
+              <img src="img/kovr2.jpg">
+            </a>
+          </div>
+          <div class="product-list">
+            <h3>Коврики в салон автомобиля AutoFlex EVA (ЭВА, ЕВА)</h3>
+            <div class="stars"></div>
+            <span class="price">₽ 1889</span>
+            <div class="actions">
+              <div class="add-to-cart">
+                <a href="menu" class="cart-button">Купить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- -->
+      <!-- -->
+      <div class="col-md-6">
+        <div class="product-item">
+          <div class="product-img">
+            <a href="menu">
+              <img src="img/kovr3.jpg">
+            </a>
+          </div>
+          <div class="product-list">
+            <h3>Коврики текстильные в салон автомобиля AutoFlex Standard</h3>
+            <div class="stars"></div>
+            <span class="price">₽ 1500</span>
+            <div class="actions">
+              <div class="add-to-cart">
+                <a href="menu" class="cart-button">Купить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- -->
+      <!-- -->
+      <div class="col-md-6">
+        <div class="product-item">
+          <div class="product-img">
+            <a href="menu">
+              <img src="img/kovr4.jpg">
+            </a>
+          </div>
+          <div class="product-list">
+            <h3>Коврики в салон и в багажник автомобиля Rival</h3>
+            <div class="stars"></div>
+            <span class="price">₽ 3500</span>
+            <div class="actions">
+              <div class="add-to-cart">
+                <a href="menu" class="cart-button">Купить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- -->
+    </div>
+    <div class="section-title">
+      <h2>Ароматизаторы</h2>
+    </div>
+    <div class="row">
+      <!-- -->
+      <div class="col-md-6">
+        <div class="product-item">
+          <div class="product-img">
+            <a href="menu">
+              <img src="img/von1.jpg">
+            </a>
+          </div>
+          <div class="product-list">
+            <h3>Автомобильный Ароматизатор в машину IDEAL аромат "Дыня" жидкий подвесной на шнурке в стеклянном флаконе с деревянной пробочкой</h3>
+            <div class="stars"></div>
+            <span class="price">₽ 380</span>
+            <div class="actions">
+              <div class="add-to-cart">
+                <a href="menu" class="cart-button">Купить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- -->
+      <div class="col-md-6">
+        <div class="product-item">
+          <div class="product-img">
+            <a href="menu">
+              <img src="img/von2.jpg">
+            </a>
+          </div>
+          <div class="product-list">
+            <h3>Ароматизатор на зеркало Areon Liquid жидкий черный кристалл 5 мл</h3>
+            <div class="stars"></div>
+            <span class="price">₽ 140</span>
+            <div class="actions">
+              <div class="add-to-cart">
+                <a href="menu" class="cart-button">Купить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- -->
+      <!-- -->
+      <div class="col-md-6">
+        <div class="product-item">
+          <div class="product-img">
+            <a href="menu">
+              <img src="img/von3.jpg">
+            </a>
+          </div>
+          <div class="product-list">
+            <h3>Собака большая в машину с освежителем "Ваниль" SKYWAY Далматинец</h3>
+            <div class="stars"></div>
+            <span class="price">₽ 877</span>
+            <div class="actions">
+              <div class="add-to-cart">
+                <a href="menu" class="cart-button">Купить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- -->
+      <!-- -->
+      <div class="col-md-6">
+        <div class="product-item">
+          <div class="product-img">
+            <a href="menu">
+              <img src="img/von4.jpg">
+            </a>
+          </div>
+          <div class="product-list">
+            <h3>Кот в машину с освежителем "Лимон" SKYWAY</h3>
+            <div class="stars"></div>
+            <span class="price">₽ 577</span>
+            <div class="actions">
+              <div class="add-to-cart">
+                <a href="menu" class="cart-button">Купить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- -->
+      <!-- -->
+    </div>
+    <div class="section-title">
+      <h2>Фирменная омывающая жидкость</h2>
+    </div>
+    <div class="row">
+      <!-- -->
+      <div class="col-md-6">
+        <div class="product-item">
+          <div class="product-img">
+            <a href="menu">
+              <img src="img/voda1.jpg">
+            </a>
+          </div>
+          <div class="product-list">
+            <h3>Жидкость для стеклоомывателя SINTEC Арктика, -15°C, 4 л</h3>
+            <div class="stars"></div>
+            <span class="price">₽ 316</span>
+            <div class="actions">
+              <div class="add-to-cart">
+                <a href="menu" class="cart-button">Купить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- -->
+      <div class="col-md-6">
+        <div class="product-item">
+          <div class="product-img">
+            <a href="menu">
+              <img src="img/voda2.jpg">
+            </a>
+          </div>
+          <div class="product-list">
+            <h3>Незамерзайка, Жидкость для стеклоомывателя без запаха, -30°C, 5 л.</h3>
+            <div class="stars"></div>
+            <span class="price">₽ 257</span>
+            <div class="actions">
+              <div class="add-to-cart">
+                <a href="menu" class="cart-button">Купить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- -->
+      <div class="col-md-6">
+        <div class="product-item">
+          <div class="product-img">
+            <a href="menu">
+              <img src="img/voda3.jpg">
+            </a>
+          </div>
+          <div class="product-list">
+            <h3>Жидкость для стеклоомывателя LIQUI MOLY ANTIFROST ScheibenFrostschutz, -5°C, 4 л</h3>
+            <div class="stars"></div>
+            <span class="price">₽ 341</span>
+            <div class="actions">
+              <div class="add-to-cart">
+                <a href="menu" class="cart-button">Купить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- -->
+      <!-- -->
+      <div class="col-md-6">
+        <div class="product-item">
+          <div class="product-img">
+            <a href="menu">
+              <img src="img/voda4.jpg">
+            </a>
+          </div>
+          <div class="product-list">
+            <h3>Незамерзайка, Жидкость для стеклоомывателя Gleid super effect без запаха, -30°C, 5 л</h3>
+            <div class="stars"></div>
+            <span class="price">₽ 250</span>
+            <div class="actions">
+              <div class="add-to-cart">
+                <a href="menu" class="cart-button">Купить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- -->
+    </div>
+  </div>
+</section>
+<!-- Intro section end -->
+<!-- Footer section -->
+<footer th:insert="templateforall :: footer"></footer>
+<!-- Footer section end -->
+
+
+<!--====== Javascripts & Jquery ======-->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/circle-progress.min.js"></script>
+<script src="js/main.js"></script>
+
+
+<!-- load for map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YyDTa0qqOjIerob2VTIwo_XVMhrruxo"></script>
+<script src="js/map.js"></script>
+
+<script>
+  window.replainSettings = { id: '7618b145-cbdc-4bad-8ac1-e59eb84e52ff' };
+  (function(u){var s=document.createElement('script');s.async=true;s.src=u;
+    var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
+  })('https://widget.replain.cc/dist/client.js');
+</script>
+
+</body>
+</html>

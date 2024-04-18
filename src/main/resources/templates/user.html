@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="tab-content menu-tab-content">
+        <!-- single tab content -->
+        <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="tab-1">
+            <div class="row menu-dark">
+                <h3 th:text="${user.id}"/>
+                <form method="post">
+                    <input type="text" name = "email" th:value="${user.email}"/>
+                    <input type="text" name = "password" th:value="${user.psswrd}"/><br>
+                    <input type="text" name = "city" th:value="${user.fk_address.city}"/>
+                    <input type="text" name = "street" th:value="${user.fk_address.street}"/>
+                    <input type="text" name = "house" th:value="${user.fk_address.house}"/>
+                    <input type="text" name = "flat" th:value="${user.fk_address.flat}"/><br>
+                    <input type="text" name = "role" th:value="${user.role}"/><br>
+                    <button type="submit">Изменить</button>
+                    <input type="hidden" name = "type" value="edit"/>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<!--    <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab-2">-->
+<!--        <div class="row menu-dark">-->
+<!--            <div class="menu-item" th:each="order : ${orders}">-->
+<!--                <div class="addbutton">-->
+<!--                    <h5 th:each="car : ${ordersMap.get(order.order_id)}" th:text="${car.key + ' x ' + car.value}"/>-->
+<!--                </div>-->
+<!--                <div class="mi-meta">-->
+<!--                    <div class="menu-price" th:text="${' ' + order.price + ' ₽'}"/>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+</body>
+</html>

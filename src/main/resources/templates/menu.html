@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="templateforall :: head"></head>
+<style>
+	h2 {
+		position: relative;
+		color: black;
+		-webkit-text-stroke: .04em black;
+	}
+	h2::before { /* второй слой */
+		content: attr(data-text);
+		position: absolute; /* в том же месте той же ширины */
+		left: 0;
+		right: 0;
+		-webkit-text-stroke: .02em white;
+	}
+	/* --------------- */
+
+	/* --------------- */
+</style>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+	
+	<!-- Header section -->
+	<header th:insert="templateforall :: header"></header>
+	<!-- Header section end -->
+
+
+	<!-- Page info section -->
+	<section class="page-top-info set-bg" data-setbg="img/review-bg.jpg">
+		<div class="ptf-center">
+			<div class="container">
+				<h2>Заказ комплектации машины</h2>
+			</div>
+		</div>
+	</section>
+	<!-- Page info section end -->
+
+
+	<!-- Menu section -->
+	<section class="mp-menu-section spad">
+		<div class="container">
+			<div class="section-title">
+				<h2>Бронь автомобиля</h2>
+			</div>
+			<ul class="mp-menu-tab-nav nav nav-tabs" role="tablist">
+				<li class="nav-item">
+					<a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">
+						<div class="mpm-text">
+							<p><img src="img/smallpic/sedan.jpg"></p>
+							<h5>Седан</h5>
+							<p>Седаны - воплощение роскоши и элегантности, предлагающие комфорт и динамику на дороге.</p>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">
+						<div class="mpm-text">
+							<p><img src="img/smallpic/kross.jpg"></p>
+							<h5>Минивены</h5>
+							<p>Минивены - идеальный выбор для семейных приключений, обеспечивающие просторное и удобное пространство для всей семьи.</p>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">
+						<div class="mpm-text">
+							<p><img src="img/smallpic/vnedor.jpg"></p>
+							<h5>Внедорожники</h5>
+							<p>Внедорожники - мощность и проходимость в сочетании с элегантным дизайном, позволяющие покорять самые сложные дорожные условия.</p>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false">
+						<div class="mpm-text">
+							<p><img src="img/smallpic/het.jpg"></p>
+							<h5>Хэтчбэки</h5>
+							<p>Хэтчбэки - компактные и стильные автомобили, обеспечивающие удобство и маневренность в городской среде.</p>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<div class="tab-content menu-tab-content">
+				<!-- single tab content -->
+				<div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="tab-1">
+					<div class="row menu-dark">
+						<div class="col-lg-6 col-lg-6my" th:each="car : ${carssedan}" th:href="${car.name}" onclick="document.getElementById(this.getAttribute('href')).submit();">
+							<form th:id="${car.name}" method="post">
+								<div class="menu-item">
+									<div class="addbutton">
+										<h5 th:text="${car.name}"/>
+										<input type="hidden" name="name" th:value="${car.name}">
+<!--										<button type="submit">+</button>-->
+									</div>
+									<div class="mi-meta">
+										<p th:text="${car.description}"/>
+										<div class="menu-price" th:text="${car.price} + ' ₽'"/>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!-- single tab content -->
+				<div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab-2">
+						<div class="row menu-dark">
+							<div class="col-lg-6 col-lg-6my" th:each="car : ${carsmini}" th:href="${car.name}" onclick="document.getElementById(this.getAttribute('href')).submit();">
+								<form th:id="${car.name}" method="post">
+									<div class="menu-item">
+										<div class="addbutton">
+											<h5 th:text="${car.name}"/>
+											<input type="hidden" name="name" th:value="${car.name}">
+											<!--										<button type="submit">+</button>-->
+										</div>
+										<div class="mi-meta">
+											<p th:text="${car.description}"/>
+											<div class="menu-price" th:text="${car.price} + ' ₽'"/>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+				</div>
+				<!-- single tab content -->
+				<div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="tab-3">
+					<div class="row menu-dark">
+						<div class="col-lg-6 col-lg-6my" th:each="car : ${carsvned}" th:href="${car.name}" onclick="document.getElementById(this.getAttribute('href')).submit();">
+							<form th:id="${car.name}" method="post">
+								<div class="menu-item">
+									<div class="addbutton">
+										<h5 th:text="${car.name}"/>
+										<input type="hidden" name="name" th:value="${car.name}">
+										<!--										<button type="submit">+</button>-->
+									</div>
+									<div class="mi-meta">
+										<p th:text="${car.description}"/>
+										<div class="menu-price" th:text="${car.price} + ' ₽'"/>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!-- single tab content -->
+				<div class="tab-pane fade" id="tab-4" role="tabpanel" aria-labelledby="tab-4">
+					<div class="row menu-dark">
+						<div class="col-lg-6 col-lg-6my" th:each="car : ${carshet}" th:href="${car.name}" onclick="document.getElementById(this.getAttribute('href')).submit();">
+							<form th:id="${car.name}" method="post">
+								<div class="menu-item">
+									<div class="addbutton">
+										<h5 th:text="${car.name}"/>
+										<input type="hidden" name="name" th:value="${car.name}">
+										<!--										<button type="submit">+</button>-->
+									</div>
+									<div class="mi-meta">
+										<p th:text="${car.description}"/>
+										<div class="menu-price" th:text="${car.price} + ' ₽'"/>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- -->
+		<div class="container">
+			<div class="section-title">
+				<h2>Аксессуары</h2>
+			</div>
+			<ul class="mp-menu-tab-nav nav nav-tabs" role="tablist">
+				<li class="nav-item">
+					<a class="nav-link active" data-toggle="tab" href="#tab-5" role="tab" aria-controls="tab-5" aria-selected="true">
+						<div class="mpm-text">
+							<p><img src="img/smallpic/disk.jpg"></p>
+							<h5>Диски</h5>
+							<p>Премиальные диски</p>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false">
+						<div class="mpm-text">
+							<p><img src="img/smallpic/kovrik.jpg"></p>
+							<h5>Ковры в салон</h5>
+							<p>Удобные и практичные коврики в автомобиль</p>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#tab-7" role="tab" aria-controls="tab-7" aria-selected="false">
+						<div class="mpm-text">
+							<p><img src="img/smallpic/aromat.jpg"></p>
+							<h5>Ароматизаторы</h5>
+							<p>Приятный запах в салоне</p>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#tab-8" role="tab" aria-controls="tab-8" aria-selected="false">
+						<div class="mpm-text">
+							<p><img src="img/smallpic/voda.jpg"></p>
+							<h5>Омывающая жидкость</h5>
+							<p>Всегда чистые стекла</p>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<div class="tab-content menu-tab-content">
+				<!-- single tab content -->
+				<div class="tab-pane fade show active" id="tab-5" role="tabpanel" aria-labelledby="tab-5">
+					<div class="row menu-dark">
+						<div class="col-lg-6 col-lg-6my" th:each="car : ${carsdisk}" th:href="${car.name}" onclick="document.getElementById(this.getAttribute('href')).submit();">
+							<form th:id="${car.name}" method="post">
+								<div class="menu-item">
+									<div class="addbutton">
+										<h5 th:text="${car.name}"/>
+										<input type="hidden" name="name" th:value="${car.name}">
+										<!--										<button type="submit">+</button>-->
+									</div>
+									<div class="mi-meta">
+										<p th:text="${car.description}"/>
+										<div class="menu-price" th:text="${car.price} + ' ₽'"/>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!-- single tab content -->
+				<div class="tab-pane fade" id="tab-6" role="tabpanel" aria-labelledby="tab-6">
+					<div class="row menu-dark">
+						<div class="col-lg-6 col-lg-6my" th:each="car : ${carskovr}" th:href="${car.name}" onclick="document.getElementById(this.getAttribute('href')).submit();">
+							<form th:id="${car.name}" method="post">
+								<div class="menu-item">
+									<div class="addbutton">
+										<h5 th:text="${car.name}"/>
+										<input type="hidden" name="name" th:value="${car.name}">
+										<!--										<button type="submit">+</button>-->
+									</div>
+									<div class="mi-meta">
+										<p th:text="${car.description}"/>
+										<div class="menu-price" th:text="${car.price} + ' ₽'"/>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!-- single tab content -->
+				<div class="tab-pane fade" id="tab-7" role="tabpanel" aria-labelledby="tab-7">
+					<div class="row menu-dark">
+						<div class="col-lg-6 col-lg-6my" th:each="car : ${carsvonuch}" th:href="${car.name}" onclick="document.getElementById(this.getAttribute('href')).submit();">
+							<form th:id="${car.name}" method="post">
+								<div class="menu-item">
+									<div class="addbutton">
+										<h5 th:text="${car.name}"/>
+										<input type="hidden" name="name" th:value="${car.name}">
+										<!--										<button type="submit">+</button>-->
+									</div>
+									<div class="mi-meta">
+										<p th:text="${car.description}"/>
+										<div class="menu-price" th:text="${car.price} + ' ₽'"/>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!-- single tab content -->
+				<div class="tab-pane fade" id="tab-8" role="tabpanel" aria-labelledby="tab-8">
+					<div class="row menu-dark">
+						<div class="col-lg-6 col-lg-6my" th:each="car : ${carsvoda}" th:href="${car.name}" onclick="document.getElementById(this.getAttribute('href')).submit();">
+							<form th:id="${car.name}" method="post">
+								<div class="menu-item">
+									<div class="addbutton">
+										<h5 th:text="${car.name}"/>
+										<input type="hidden" name="name" th:value="${car.name}">
+										<!--										<button type="submit">+</button>-->
+									</div>
+									<div class="mi-meta">
+										<p th:text="${car.description}"/>
+										<div class="menu-price" th:text="${car.price} + ' ₽'"/>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+	<!-- Menu section end -->
+
+
+
+
+
+
+
+
+
+	<!-- Footer section -->
+	<footer th:insert="templateforall :: footer"></footer>
+	<!-- Footer section end -->
+	<script>
+		function sbmt(id) {
+			console.log("'" + toString(id) + "'")
+			document.getElementById("'" + id + "'").submit();
+		}
+	</script>
+	<!--====== Javascripts & Jquery ======-->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/circle-progress.min.js"></script>
+	<script src="js/main.js"></script>
+
+
+	<!-- load for map -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YyDTa0qqOjIerob2VTIwo_XVMhrruxo"></script>
+	<script src="js/map.js"></script>
+
+	<script>
+		window.replainSettings = { id: '7618b145-cbdc-4bad-8ac1-e59eb84e52ff' };
+		(function(u){var s=document.createElement('script');s.async=true;s.src=u;
+			var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
+		})('https://widget.replain.cc/dist/client.js');
+	</script>
+
+    </body>
+</html>
